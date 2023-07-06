@@ -12,6 +12,7 @@ void main() {
       child: MyApp()));
 }
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   MyApp({super.key});
   WeatherModel? weather;
@@ -19,8 +20,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
-      home: MyHomePage(),
+      theme: ThemeData(
+        primarySwatch: Provider.of<WeatherProvider>(context).weatherData == null
+            ? Colors.blue
+            : Provider.of<WeatherProvider>(context)
+                .weatherData!
+                .getThemeColor(),
+      ),
+      home: const MyHomePage(),
     );
   }
 }

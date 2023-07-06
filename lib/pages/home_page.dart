@@ -5,7 +5,7 @@ import 'package:weather_app/pages/search_page.dart';
 import 'package:weather_app/providers/weather_provider.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key});
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: weatherData == null
-          ? Center(
+          ? const Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -60,27 +60,35 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             )
           : Container(
-              color: Colors.orangeAccent,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                    weatherData!.getThemeColor(),
+                    weatherData!.getThemeColor()[300]!,
+                    weatherData!.getThemeColor()[100]!,
+                  ])),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Spacer(
+                  const Spacer(
                     flex: 3,
                   ),
                   Text(
                     Provider.of<WeatherProvider>(context).cityName ?? '',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
                     'Updated: ${weatherData?.date.hour.toString() ?? ''}:${weatherData?.date.minute.toString() ?? ''}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 24,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -88,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           'https:${weatherData?.weatherIcon.toString() ?? ''}'),
                       Text(
                         '${weatherData?.temp.toInt() ?? ''}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 24,
                         ),
                       ),
@@ -104,15 +112,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     weatherData?.weatherStateName ?? '',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Spacer(
+                  const Spacer(
                     flex: 5,
                   ),
                 ],
