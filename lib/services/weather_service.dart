@@ -19,7 +19,7 @@ class WeatherService {
       WeatherModel weather = WeatherModel.fromJson(data);
     } catch (e) {
       // ignore: avoid_print
-      print(e);
+      print('error =$e');
     }
 
     return weather;
