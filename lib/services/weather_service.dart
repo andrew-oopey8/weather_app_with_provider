@@ -15,8 +15,10 @@ class WeatherService {
 
       Map<String, dynamic> data = jsonDecode(response.body);
 
+      // ignore: unused_local_variable
       WeatherModel weather = WeatherModel.fromJson(data);
     } catch (e) {
+      // ignore: avoid_print
       print(e);
     }
 
