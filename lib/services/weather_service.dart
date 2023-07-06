@@ -16,7 +16,9 @@ class WeatherService {
       Map<String, dynamic> data = jsonDecode(response.body);
 
       WeatherModel weather = WeatherModel.fromJson(data);
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
 
     return weather;
   }
