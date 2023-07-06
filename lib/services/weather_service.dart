@@ -13,7 +13,6 @@ class WeatherService {
 
     Map<String, dynamic> data = jsonDecode(response.body);
 
-
     WeatherModel weather = WeatherModel.fromJson(data);
 
     return weather;
